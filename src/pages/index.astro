@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+---
+
+<BaseLayout title="Екатерина Елизарова — психолог для подростков и взрослых">
+
+  <!-- MOBILE: fullscreen photo, burger menu -->
+  <div class="md:hidden h-screen relative overflow-hidden"
+    style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <!-- Social icons -->
+    <div class="absolute top-6 left-6 z-10">
+      <SocialIcons />
+    </div>
+
+    <!-- Burger button -->
+    <button id="burger" class="absolute top-6 right-6 z-20 text-white p-1" aria-label="Меню">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <!-- Burger menu overlay -->
+    <div id="burger-menu" class="hidden absolute inset-0 z-30 flex flex-col items-center justify-center gap-10"
+      style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+      <button id="burger-close" class="absolute top-6 right-6 text-white p-1" aria-label="Закрыть">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <a href="/about" class="text-white text-4xl font-bold hover:text-white/70 transition-colors">Обо мне</a>
+      <a href="/blog" class="text-white text-4xl font-bold hover:text-white/70 transition-colors">Публикации</a>
+    </div>
+
+    <!-- Bottom: name, subtitle, book button -->
+    <div class="absolute bottom-8 left-6 right-6 z-10">
+      <h1 class="text-white text-3xl font-bold tracking-tight drop-shadow-md leading-tight">
+        Екатерина Елизарова
+      </h1>
+      <p class="text-white/90 text-base font-semibold mt-1 drop-shadow">
+        психолог для подростков и взрослых
+      </p>
+      <a
+        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block mt-4 bg-white text-gray-800 text-lg font-bold px-8 py-3 rounded-lg hover:bg-beige-50 transition-colors"
+      >
+        Записаться
+      </a>
+    </div>
+  </div>
+
+  <!-- DESKTOP: photo with frame, all nav buttons below -->
+  <div class="hidden md:flex h-screen bg-beige-100 flex-col p-8">
+    <div class="relative flex-1 min-h-0 rounded-lg overflow-hidden"
+      style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+      <div class="absolute inset-0 bg-black/20"></div>
+
+      <!-- Social icons -->
+      <div class="absolute top-6 left-6 z-10">
+        <SocialIcons />
+      </div>
+
+      <!-- Name and subtitle -->
+      <div class="absolute bottom-6 left-6 z-10">
+        <h1 class="text-white text-5xl font-bold tracking-tight drop-shadow-md leading-tight">
+          Екатерина Елизарова
+        </h1>
+        <p class="text-white/90 text-2xl font-semibold mt-1 drop-shadow">
+          психолог для подростков и взрослых
+        </p>
+      </div>
+    </div>
+
+    <!-- Nav buttons in the frame -->
+    <nav class="flex items-center gap-12 pt-6 pb-1 px-1 flex-shrink-0">
+      <a
+        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors"
+      >
+        Записаться
+      </a>
+      <a href="/about" class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors">
+        Обо мне
+      </a>
+      <a href="/blog" class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors">
+        Публикации
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('burger-menu');
+    const close = document.getElementById('burger-close');
+    burger?.addEventListener('click', () => menu?.classList.remove('hidden'));
+    close?.addEventListener('click', () => menu?.classList.add('hidden'));
+  </script>
+
+</BaseLayout>

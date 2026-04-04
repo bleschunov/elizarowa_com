@@ -1,0 +1,23 @@
+---
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { class: className = '', size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-sm px-4 py-2',
+  md: 'text-base px-6 py-3',
+  lg: 'text-lg px-8 py-4',
+};
+---
+
+<a
+  href="https://calendly.com/app/scheduling/meeting_types/user/me"
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`inline-block bg-beige-700 text-white rounded-full font-medium hover:bg-beige-800 transition-colors ${sizeClasses[size]} ${className}`}
+>
+  Записаться
+</a>

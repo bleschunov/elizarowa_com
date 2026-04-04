@@ -1,0 +1,106 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import BookButton from '../components/BookButton.astro';
+---
+
+<PageLayout title="Обо мне — Екатерина Елизарова" description="Психолог Екатерина Елизарова — история, образование, подход к работе">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Hero section -->
+    <section class="flex flex-col md:flex-row gap-10 items-start mb-16">
+      <div class="w-full md:w-96 flex-shrink-0">
+        <div class="aspect-[3/4] rounded-lg bg-gradient-to-br from-beige-200 to-beige-400 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-beige-600">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </div>
+      </div>
+      <div class="flex-1">
+        <h1 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-3">Обо мне</h1>
+        <p class="text-beige-700 font-medium mb-4">Психолог для подростков и взрослых</p>
+        <p class="text-gray-600 leading-relaxed">
+          Я — Екатерина Елизарова, практикующий психолог. Работаю с подростками и взрослыми,
+          помогаю разобраться в себе, наладить отношения с близкими и найти опору в сложных жизненных ситуациях.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Моя история</h2>
+      <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+        <p class="text-gray-600 leading-relaxed mb-3">
+          [Placeholder] Здесь будет ваша личная история — что привело вас в психологию,
+          какой путь вы прошли, почему выбрали работу именно с подростками и взрослыми.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          [Placeholder] Расскажите о своём профессиональном пути, ключевых моментах
+          становления как специалиста, о том, что вдохновляет вас в этой работе.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Образование</h2>
+      <div class="space-y-3">
+        {[
+          { year: '20XX', text: '[Placeholder] Название университета, специальность «Психология»' },
+          { year: '20XX', text: '[Placeholder] Дополнительное профессиональное образование / повышение квалификации' },
+          { year: '20XX', text: '[Placeholder] Сертификация по направлению (например, КПТ, гештальт-терапия и т.д.)' },
+        ].map(item => (
+          <div class="flex gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm">
+            <span class="text-beige-600 font-semibold text-sm flex-shrink-0 pt-0.5">{item.year}</span>
+            <p class="text-gray-600 text-sm">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Мой подход</h2>
+      <div class="bg-beige-50 rounded-2xl p-6 border border-beige-200">
+        <p class="text-gray-600 leading-relaxed mb-4">
+          [Placeholder] Опишите ваш терапевтический подход — какие методы и техники вы используете,
+          как строится ваша работа с клиентами, что для вас важно в терапевтических отношениях.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          [Placeholder] Например: работа в рамках когнитивно-поведенческой терапии, гуманистического
+          подхода, системной семейной терапии — в зависимости от вашей специализации.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Опыт работы</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        {[
+          { number: 'X+', label: 'лет практики' },
+          { number: 'XXX+', label: 'клиентов' },
+          { number: 'XXX+', label: 'часов терапии' },
+        ].map(stat => (
+          <div class="bg-white rounded-xl p-5 text-center border border-beige-100 shadow-sm">
+            <div class="text-3xl font-bold text-beige-700 mb-1">{stat.number}</div>
+            <div class="text-gray-500 text-sm">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+        <p class="text-gray-600 leading-relaxed">
+          [Placeholder] Расскажите подробнее об опыте работы: с какими запросами чаще всего
+          обращаются клиенты, в каких форматах вы работаете (индивидуально, с парами, с группами),
+          есть ли опыт работы в организациях, центрах и т.д.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center py-8 bg-beige-100 rounded-2xl">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
+      <p class="text-gray-500 mb-6">Первая консультация — шаг к переменам</p>
+      <BookButton size="lg" />
+    </section>
+  </div>
+</PageLayout>
