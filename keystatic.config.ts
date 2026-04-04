@@ -1,14 +1,16 @@
 import { config, collection, fields } from '@keystatic/core';
 
-const storage = import.meta.env.DEV
-  ? { kind: 'local' as const }
-  : {
+const useGithub = !import.meta.env.DEV || import.meta.env.PUBLIC_KEYSTATIC_STORAGE === 'github';
+
+const storage = useGithub
+  ? {
       kind: 'github' as const,
       repo: {
-        owner: import.meta.env.GITHUB_REPO_OWNER ?? '',
-        name: import.meta.env.GITHUB_REPO_NAME ?? '',
+        owner: import.meta.env.PUBLIC_GITHUB_REPO_OWNER ?? '',
+        name: import.meta.env.PUBLIC_GITHUB_REPO_NAME ?? '',
       },
-    };
+    }
+  : { kind: 'local' as const };
 
 export default config({
   storage,
