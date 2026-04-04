@@ -1,0 +1,72 @@
+---
+const navLinks = [
+  { href: '/', label: 'Главная' },
+  { href: '/about', label: 'Обо мне' },
+  { href: '/blog', label: 'Публикации' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-beige-50/90 backdrop-blur-sm border-b border-beige-200">
+  <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-gray-800 font-semibold text-lg hover:text-beige-700 transition-colors">
+      Екатерина Елизарова
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`text-sm transition-colors hover:text-beige-700 ${
+            currentPath === link.href ? 'text-beige-700 font-medium' : 'text-gray-600'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-beige-700 text-white text-sm px-4 py-2 rounded-full hover:bg-beige-800 transition-colors"
+      >
+        Записаться
+      </a>
+    </nav>
+    <button id="menu-toggle" class="md:hidden text-gray-700 p-2" aria-label="Меню">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-beige-200 bg-beige-50">
+    <nav class="flex flex-col px-6 py-4 gap-3">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`text-sm transition-colors hover:text-beige-700 ${
+            currentPath === link.href ? 'text-beige-700 font-medium' : 'text-gray-600'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-beige-700 text-white text-sm px-4 py-2 rounded-full hover:bg-beige-800 transition-colors text-center mt-2"
+      >
+        Записаться
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

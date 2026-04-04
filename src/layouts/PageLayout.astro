@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="pt-16 min-h-screen">
+    <slot />
+  </main>
+  <footer class="bg-beige-100 border-t border-beige-200 py-8 mt-16">
+    <div class="max-w-4xl mx-auto px-6 text-center text-gray-500 text-sm">
+      <p>© 2025 Екатерина Елизарова. Все права защищены.</p>
+    </div>
+  </footer>
+</BaseLayout>
