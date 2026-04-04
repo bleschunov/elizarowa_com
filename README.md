@@ -173,9 +173,11 @@ sudo ufw enable
 ### Шаг 1. Установка зависимостей на сервере
 
 ```bash
-# Node.js
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
+# Node.js через NVM (рекомендуется)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install 20
+nvm use 20
 
 # PM2
 sudo npm install -g pm2
@@ -203,11 +205,25 @@ npm run build
 
 ### Шаг 3. Запуск через PM2
 
+Запустить сервер и дать ему имя `elizarowa-com`:
+
 ```bash
 pm2 start dist/server/entry.mjs --name elizarowa-com
+```
+
+Сохранить список запущенных процессов на диск (чтобы PM2 знал что восстанавливать после перезагрузки):
+
+```bash
 pm2 save
+```
+
+Добавить PM2 в автозапуск системы. Команда выведет в терминал строку вида `sudo env PATH=... pm2 startup systemd ...` — её нужно скопировать и выполнить:
+
+```bash
 pm2 startup
 ```
+
+Проверить статус и логи:
 
 ```bash
 pm2 status
@@ -275,11 +291,30 @@ Workflow уже создан в `.github/workflows/deploy.yml`. Он запус�
 | `SSH_USER` | пользователь на VPS (`ubuntu`, `root` и т.д.) |
 | `DEPLOY_PATH` | путь к проекту, например `/var/www/elizarowa-com` |
 
-Сгенерировать SSH-ключ для деплоя:
+Пару ключей для деплоя нужно генерировать **локально** — не на VPS. Приватный ключ должен существовать только в GitHub Secrets, на сервере хранится только публичный.
+
+Сгенерировать SSH-ключ для деплоя (выполнять **локально**):
 
 ```bash
 ssh-keygen -t ed25519 -C "github-actions-deploy" -f ~/.ssh/deploy_key -N ""
-cat ~/.ssh/deploy_key.pub >> ~/.ssh/authorized_keys  # на VPS
+```
+
+Скопировать публичный ключ на VPS:
+
+```bash
+ssh-copy-id -i ~/.ssh/deploy_key.pub deploy@твой-ip
+```
+
+Добавить содержимое приватного ключа в GitHub Secrets (`SSH_PRIVATE_KEY`):
+
+```bash
+cat ~/.ssh/deploy_key
+```
+
+После добавления в GitHub Secrets приватный ключ можно удалить локально — он больше не нужен:
+
+```bash
+rm ~/.ssh/deploy_key
 ```
 
 ---
