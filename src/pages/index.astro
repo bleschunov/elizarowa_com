@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
+import { Image } from 'astro:assets';
+import kateMain from '../assets/kate_main.jpeg';
 ---
 
 <BaseLayout title="Екатерина Елизарова — психолог для подростков и взрослых">
 
   <!-- MOBILE: fullscreen photo, burger menu -->
-  <div class="md:hidden h-screen relative overflow-hidden"
-    style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+  <div class="md:hidden h-screen relative overflow-hidden bg-beige-700">
+    <Image src={kateMain} alt="Екатерина Елизарова" class="absolute inset-0 w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-black/20"></div>
 
     <!-- Social icons -->
@@ -55,8 +57,8 @@ import SocialIcons from '../components/SocialIcons.astro';
 
   <!-- DESKTOP: photo with frame, all nav buttons below -->
   <div class="hidden md:flex h-screen bg-beige-100 flex-col p-8">
-    <div class="relative flex-1 min-h-0 rounded-lg overflow-hidden"
-      style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+    <div class="relative flex-1 min-h-0 rounded-lg overflow-hidden bg-beige-700">
+      <Image src={kateMain} alt="Екатерина Елизарова" class="absolute inset-0 w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-black/20"></div>
 
       <!-- Social icons -->

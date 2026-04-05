@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import BookButton from '../components/BookButton.astro';
+import { Image } from 'astro:assets';
+import kateAbout from '../assets/kate_about.jpeg';
 ---
 
 <PageLayout title="Обо мне — Екатерина Елизарова" description="Психолог Екатерина Елизарова — история, образование, подход к работе">
@@ -9,10 +11,8 @@ import BookButton from '../components/BookButton.astro';
     <!-- Hero section -->
     <section class="flex flex-col md:flex-row gap-10 items-start mb-16">
       <div class="w-full md:w-96 flex-shrink-0">
-        <div class="aspect-[3/4] rounded-lg bg-gradient-to-br from-beige-200 to-beige-400 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-beige-600">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
+        <div class="aspect-[3/4] rounded-lg overflow-hidden bg-beige-200">
+          <Image src={kateAbout} alt="Екатерина Елизарова" class="w-full h-full object-cover object-center" />
         </div>
       </div>
       <div class="flex-1">
