@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <BaseLayout title={title} description={description}>
@@ -17,7 +18,7 @@ const { title, description } = Astro.props;
   </main>
   <footer class="bg-beige-100 border-t border-beige-200 py-8 mt-16">
     <div class="max-w-4xl mx-auto px-6 text-center text-gray-500 text-sm">
-      <p>© 2025 Екатерина Елизарова. Все права защищены.</p>
+      <p>© {year} Самозанятая Елизарова Екатерина Владимировна. Все права защищены.</p>
     </div>
   </footer>
 </BaseLayout>

@@ -1,0 +1,97 @@
+---
+interface Props {
+  src: string;
+  poster?: string;
+}
+
+const { src, poster } = Astro.props;
+---
+
+<div id="vw-wrapper" class="fixed bottom-6 left-6 z-50">
+  <div
+    id="vw-container"
+    class="relative rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer"
+    style="width: min(200px, 30vw); transition: width 0.3s ease, transform 0.2s ease;"
+  >
+    <div style="aspect-ratio: 9/16;">
+      <video
+        id="vw-video"
+        class="w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        src={src}
+        poster={poster}
+      ></video>
+    </div>
+    <button
+      id="vw-close"
+      title="Закрыть"
+      class="absolute top-2 right-2 bg-black/60 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-black/80 transition-colors"
+    >
+      <!-- Close icon (mini state) -->
+      <svg id="vw-icon-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+      <!-- Collapse icon (expanded state) -->
+      <svg id="vw-icon-collapse" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hidden">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const wrapper = document.getElementById('vw-wrapper');
+  const container = document.getElementById('vw-container') as HTMLElement;
+  const video = document.getElementById('vw-video') as HTMLVideoElement;
+  const closeBtn = document.getElementById('vw-close');
+  const iconClose = document.getElementById('vw-icon-close');
+  const iconCollapse = document.getElementById('vw-icon-collapse');
+
+  let expanded = false;
+
+  function collapse() {
+    expanded = false;
+    container.style.width = 'min(200px, 30vw)';
+    video.muted = true;
+    video.loop = true;
+    video.play();
+    iconClose?.classList.remove('hidden');
+    iconCollapse?.classList.add('hidden');
+  }
+
+  function expand() {
+    expanded = true;
+    container.style.width = 'min(480px, calc(100vw - 48px))';
+    container.style.transform = 'scale(1)';
+    video.muted = false;
+    video.loop = false;
+    video.currentTime = 0;
+    video.play();
+    iconClose?.classList.add('hidden');
+    iconCollapse?.classList.remove('hidden');
+  }
+
+  container.addEventListener('mouseenter', () => {
+    if (!expanded) container.style.transform = 'scale(1.05)';
+  });
+
+  container.addEventListener('mouseleave', () => {
+    if (!expanded) container.style.transform = 'scale(1)';
+  });
+
+  container.addEventListener('click', (e) => {
+    if (closeBtn?.contains(e.target as Node)) return;
+    if (!expanded) expand(); else collapse();
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    if (expanded) {
+      collapse();
+    } else {
+      wrapper?.classList.add('hidden');
+    }
+  });
+</script>

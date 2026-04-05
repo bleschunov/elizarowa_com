@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const message = `📩 Новая заявка\nИмя: ${name}\nEmail: ${email}\nМатериал: ${product}`;
+    const message = `📩 Новая заявка\nИмя: ${name}\nTelegram: ${email}\nМатериал: ${product}`;
 
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${token}/sendMessage`,

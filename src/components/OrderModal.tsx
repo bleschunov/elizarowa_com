@@ -79,14 +79,15 @@ export default function OrderModal({ productTitle, isOpen, onClose }: OrderModal
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Telegram</label>
                 <input
-                  type="email"
+                  type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="example@mail.ru"
-                  className="w-full border border-beige-200 rounded-lg px-4 py-2.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-beige-400 focus:ring-2 focus:ring-beige-200 transition-colors"
+                  placeholder="@username"
+                  maxLength={64}
+className="w-full border border-beige-200 rounded-lg px-4 py-2.5 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-beige-400 focus:ring-2 focus:ring-beige-200 transition-colors"
                 />
               </div>
               {status === 'error' && (

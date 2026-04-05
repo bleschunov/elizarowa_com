@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
+import { Image } from 'astro:assets';
+import kateMain from '../assets/kate_main.jpeg';
 ---
 
 <BaseLayout title="Екатерина Елизарова — психолог для подростков и взрослых">
 
   <!-- MOBILE: fullscreen photo, burger menu -->
-  <div class="md:hidden h-screen relative overflow-hidden"
-    style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+  <div class="md:hidden h-screen relative overflow-hidden bg-beige-700">
+    <Image src={kateMain} alt="Екатерина Елизарова" class="absolute inset-0 w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-black/20"></div>
 
     <!-- Social icons -->
@@ -43,7 +45,7 @@ import SocialIcons from '../components/SocialIcons.astro';
         психолог для подростков и взрослых
       </p>
       <a
-        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        href="https://t.me/ekaterina_elizarowa"
         target="_blank"
         rel="noopener noreferrer"
         class="inline-block mt-4 bg-white text-gray-800 text-lg font-bold px-8 py-3 rounded-lg hover:bg-beige-50 transition-colors"
@@ -55,8 +57,8 @@ import SocialIcons from '../components/SocialIcons.astro';
 
   <!-- DESKTOP: photo with frame, all nav buttons below -->
   <div class="hidden md:flex h-screen bg-beige-100 flex-col p-8">
-    <div class="relative flex-1 min-h-0 rounded-lg overflow-hidden"
-      style="background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);">
+    <div class="relative flex-1 min-h-0 rounded-lg overflow-hidden bg-beige-700">
+      <Image src={kateMain} alt="Екатерина Елизарова" class="absolute inset-0 w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-black/20"></div>
 
       <!-- Social icons -->
@@ -78,7 +80,7 @@ import SocialIcons from '../components/SocialIcons.astro';
     <!-- Nav buttons in the frame -->
     <nav class="flex items-center gap-12 pt-6 pb-1 px-1 flex-shrink-0">
       <a
-        href="https://calendly.com/app/scheduling/meeting_types/user/me"
+        href="https://t.me/ekaterina_elizarowa"
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors"

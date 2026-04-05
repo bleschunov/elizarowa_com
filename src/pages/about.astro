@@ -1,106 +1,304 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import BookButton from '../components/BookButton.astro';
+import VideoWidget from '../components/VideoWidget.astro';
+import { Image } from 'astro:assets';
+import kateAbout from '../assets/kate_about.jpeg';
 ---
 
-<PageLayout title="Обо мне — Екатерина Елизарова" description="Психолог Екатерина Елизарова — история, образование, подход к работе">
-  <div class="max-w-6xl mx-auto px-6 py-12">
+<PageLayout title="Обо мне — Екатерина Елизарова" description="Психолог Екатерина Елизарова — тревожные и депрессивные расстройства, КПТ">
+  <div class="max-w-4xl mx-auto px-6 py-12">
 
-    <!-- Hero section -->
+    <!-- Hero -->
     <section class="flex flex-col md:flex-row gap-10 items-start mb-16">
-      <div class="w-full md:w-96 flex-shrink-0">
-        <div class="aspect-[3/4] rounded-lg bg-gradient-to-br from-beige-200 to-beige-400 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-beige-600">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
+      <div class="w-full md:w-80 flex-shrink-0">
+        <div class="aspect-[3/4] rounded-lg overflow-hidden bg-beige-200">
+          <Image src={kateAbout} alt="Екатерина Елизарова" class="w-full h-full object-cover object-center" />
         </div>
       </div>
       <div class="flex-1">
-        <h1 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-3">Обо мне</h1>
-        <p class="text-beige-700 font-medium mb-4">Психолог для подростков и взрослых</p>
-        <p class="text-gray-600 leading-relaxed">
-          Я — Екатерина Елизарова, практикующий психолог. Работаю с подростками и взрослыми,
-          помогаю разобраться в себе, наладить отношения с близкими и найти опору в сложных жизненных ситуациях.
+        <h1 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-3">Екатерина Елизарова</h1>
+        <p class="text-beige-700 font-medium">Психолог для подростков и их мам</p>
+                <p class="text-gray-500 leading-relaxed mb-6">
+          Член Ассоциации когнитивно–бихевиоральных терапевтов.<br/>
         </p>
+        <p class="text-gray-700 text-lg leading-relaxed mb-4">
+          Я помогаю мамам, которые растят сына одни — понять его, не потерять с ним связь и вырастить мужчину, а не вечного ребёнка.
+        </p>
+
       </div>
     </section>
 
-    <!-- Story -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Моя история</h2>
-      <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
-        <p class="text-gray-600 leading-relaxed mb-3">
-          [Placeholder] Здесь будет ваша личная история — что привело вас в психологию,
-          какой путь вы прошли, почему выбрали работу именно с подростками и взрослыми.
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          [Placeholder] Расскажите о своём профессиональном пути, ключевых моментах
-          становления как специалиста, о том, что вдохновляет вас в этой работе.
-        </p>
-      </div>
-    </section>
+    <!-- ОПЫТ И ОБРАЗОВАНИЕ ПЕРЕМЕЩЕНЫ ВНИЗ -->
 
-    <!-- Education -->
+    <!-- Запросы -->
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Образование</h2>
-      <div class="space-y-3">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Запросы, с которыми я работаю</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {[
-          { year: '20XX', text: '[Placeholder] Название университета, специальность «Психология»' },
-          { year: '20XX', text: '[Placeholder] Дополнительное профессиональное образование / повышение квалификации' },
-          { year: '20XX', text: '[Placeholder] Сертификация по направлению (например, КПТ, гештальт-терапия и т.д.)' },
+          'Тревожность, постоянное беспокойство',
+          'Депрессивные состояния, апатия',
+          'Выгорание, потеря смысла',
+          'Страх ошибиться, перфекционизм',
+          'Ощущение тупика, сложно принять решение',
+          'Отсутствие опоры и потеря ориентиров',
+          'Трудности в отношениях',
+          'Потерянность, не понимаю чего хочу',
         ].map(item => (
-          <div class="flex gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm">
-            <span class="text-beige-600 font-semibold text-sm flex-shrink-0 pt-0.5">{item.year}</span>
-            <p class="text-gray-600 text-sm">{item.text}</p>
+          <div class="flex gap-3 items-start bg-white rounded-xl p-4 border border-beige-100 shadow-sm">
+            <span class="text-beige-400 mt-1 flex-shrink-0">•</span>
+            <span class="text-gray-600 text-base">{item}</span>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Approach -->
+    <!-- Как я работаю -->
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Мой подход</h2>
-      <div class="bg-beige-50 rounded-2xl p-6 border border-beige-200">
-        <p class="text-gray-600 leading-relaxed mb-4">
-          [Placeholder] Опишите ваш терапевтический подход — какие методы и техники вы используете,
-          как строится ваша работа с клиентами, что для вас важно в терапевтических отношениях.
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Как я работаю</h2>
+
+      <div class="mb-4">
+        <p class="text-gray-500 text-base mb-5">
+          Я работаю в подходе <span class="text-gray-700 font-medium">КПТ — когнитивно–поведенческой терапии</span>. Это научно обоснованный метод с понятной структурой и измеримым результатом.
         </p>
-        <p class="text-gray-600 leading-relaxed">
-          [Placeholder] Например: работа в рамках когнитивно-поведенческой терапии, гуманистического
-          подхода, системной семейной терапии — в зависимости от вашей специализации.
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[
+            { n: '1', text: 'Обнаружить негативные убеждения' },
+            { n: '2', text: 'Понять, как они влияют на эмоции и поведение' },
+            { n: '3', text: 'Заменить их на более адаптивные' },
+            { n: '4', text: 'Сформировать новые навыки' },
+          ].map(item => (
+            <div class="flex gap-4 items-start bg-white rounded-xl p-4 border border-beige-100 shadow-sm">
+              <span class="text-2xl font-bold text-beige-200 leading-none flex-shrink-0">{item.n}</span>
+              <span class="text-gray-600 text-base pt-0.5">{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <div class="flex-1 bg-beige-50 rounded-xl p-4 border border-beige-100 text-center">
+          <div class="text-2xl font-bold text-beige-700 mb-1">10–20</div>
+          <div class="text-gray-500 text-base">консультаций</div>
+        </div>
+        <div class="flex-1 bg-beige-50 rounded-xl p-4 border border-beige-100 text-center">
+          <div class="text-2xl font-bold text-beige-700 mb-1">2–3</div>
+          <div class="text-gray-500 text-base">месяца</div>
+        </div>
+        <div class="flex-1 bg-beige-50 rounded-xl p-4 border border-beige-100 text-center">
+          <div class="text-2xl font-bold text-beige-700 mb-1">1×</div>
+          <div class="text-gray-500 text-base">в неделю</div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-base mb-4">Иногда в процессе есть домашние задания — например, дневник мыслей.</p>
+
+      <div class="bg-beige-100 rounded-2xl p-6 border border-beige-200">
+        <p class="text-gray-700 text-base leading-relaxed mb-2">
+          Ничего страшного, если вы не понимаете, что хотите обсудить.
+        </p>
+        <p class="text-gray-800 font-semibold text-base leading-relaxed mb-3">
+          Вашего дискомфорта, тревоги, страха уже достаточно.
+        </p>
+        <p class="text-gray-500 text-base leading-relaxed">
+          Я выслушаю, проведу диагностику, предложу маршрут действий и при необходимости перенаправлю вас к профильному специалисту.
         </p>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Опыт работы</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        {[
-          { number: 'X+', label: 'лет практики' },
-          { number: 'XXX+', label: 'клиентов' },
-          { number: 'XXX+', label: 'часов терапии' },
-        ].map(stat => (
-          <div class="bg-white rounded-xl p-5 text-center border border-beige-100 shadow-sm">
-            <div class="text-3xl font-bold text-beige-700 mb-1">{stat.number}</div>
-            <div class="text-gray-500 text-sm">{stat.label}</div>
-          </div>
-        ))}
+    <!-- Форматы работы -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Форматы работы</h2>
+
+      <p class="text-gray-400 text-sm uppercase tracking-wide mb-3">Для родителей и подростков</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+          <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Знакомство</div>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Встреча онлайн, 15–30 минут. Обсудим вашу ситуацию, расскажу, чем и в какие сроки могу помочь.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+          <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Индивидуальная консультация</div>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Тревожные состояния, внутреннее напряжение, ощущение тупика и потеря ориентиров. Онлайн, 1 раз в неделю.
+          </p>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
-        <p class="text-gray-600 leading-relaxed">
-          [Placeholder] Расскажите подробнее об опыте работы: с какими запросами чаще всего
-          обращаются клиенты, в каких форматах вы работаете (индивидуально, с парами, с группами),
-          есть ли опыт работы в организациях, центрах и т.д.
-        </p>
+
+      <p class="text-gray-400 text-sm uppercase tracking-wide mb-3">Для психологов</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+          <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Менторское сопровождение</div>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Для тех, кто хочет начать практику психолога. За 9 месяцев помогаю собрать индивидуальный план развития и получить первый опыт.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
+          <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Групповая интервизия</div>
+          <p class="text-gray-600 text-base leading-relaxed">
+            Группа до 10 человек — разбираем случаи, делимся опытом и поддерживаем друг друга в профессиональном росте.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- CTA -->
+    <section class="text-center py-8 bg-beige-100 rounded-2xl mb-16">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
+      <p class="text-gray-500 mb-6">Первая консультация — шаг к переменам</p>
+      <BookButton size="lg" />
+    </section>
+
+    <!-- Опыт работы -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Опыт работы</h2>
+      <div class="space-y-3">
+        {[
+          {
+            period: '2022–н.в.',
+            place: 'Частная практика',
+            text: '40+ клиентов. Веду клиента от первого запроса до завершения работы. При необходимости подбираю специалистов педагогического и медицинского профиля.',
+          },
+          {
+            period: '2023–2024',
+            place: 'ГАУГН при РАН',
+            text: 'Разработала и продала образовательный тренинг по ассертивному поведению для студентов — проводится уже 3 года. Проводила оценку запроса и маршрутизацию студентов.',
+          },
+          {
+            period: '2023–2024',
+            place: 'STUDY SBS, ментор',
+            text: 'Сопроводила 8 образовательных кейсов с семьями подростков 14–19 лет в EdTech–консалтинге.',
+          },
+          {
+            period: '2023–2024',
+            place: 'Российский Красный Крест',
+            text: 'Специалист службы психолого–социальной поддержки. Кризисное консультирование на горячей линии.',
+          },
+        ].map(item => (
+          <div class="flex flex-col sm:flex-row gap-1 sm:gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm">
+            <div class="flex-shrink-0 sm:w-40">
+              <div class="text-beige-600 font-semibold text-base whitespace-nowrap">{item.period}</div>
+              <div class="text-gray-500 text-base">{item.place}</div>
+            </div>
+            <p class="text-gray-600 text-base leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Образование -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Образование</h2>
+      <div class="space-y-3">
+        <!-- Высшее -->
+        <button
+          data-file="/diplomas/degree_gaougn.jpg" data-type="image"
+          class="diploma-btn w-full flex gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
+        >
+          <span class="text-beige-600 font-semibold text-base flex-shrink-0 pt-0.5 whitespace-nowrap">2019–2023</span>
+          <p class="text-gray-600 text-base flex-1">Психология, бакалавр с отличием — ГАУГН при РАН [3700 часов]</p>
+        </button>
+
+        <!-- Доп. образование -->
+        <div class="pt-2">
+          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">Дополнительное образование</p>
+          <div class="space-y-2">
+            {[
+              { year: '2025', hours: '180 ч', org: 'Поведенческая компания',                            course: 'Основы когнитивно–поведенческой терапии',                  file: '/diplomas/cert_cbt_basics.jpg',         type: 'image' },
+              { year: '2025', hours: '256 ч', org: 'Институт ПрЭСТО',                                   course: 'Тьютор',                                                  file: '/diplomas/cert_presto_tutor.jpg',        type: 'image' },
+              { year: '2025', hours: '36 ч',  org: 'Международная академия научной психологии',         course: 'КПТ депрессивных расстройств',                            file: '/diplomas/cert_cbt_depression.jpg',      type: 'image' },
+              { year: '2025', hours: '16 ч',  org: 'Институт Иматон',                                   course: 'Песочная терапия Юнга в работе с детьми и подростками',  file: '/diplomas/cert_sand_therapy.jpg',        type: 'image' },
+              { year: '2024', hours: '270 ч', org: 'Психодемия',                                        course: 'Подростковый психолог',                                   file: '/diplomas/cert_teen_psychologist.jpg',   type: 'image' },
+              { year: '2024', hours: '40 ч',  org: 'Международный институт психосоматического здоровья', course: 'Введение в когнитивно–поведенческую терапию',           file: '/diplomas/cert_cbt_intro.jpg',           type: 'image' },
+              { year: '2024', hours: null,    org: 'Insunrise Psychometrix',                            course: 'Эффективное командное взаимодействие по методике DISC',  file: '/diplomas/cert_disc.jpg',                type: 'image' },
+              { year: '2024', hours: '2 ч',   org: 'Сообщество «Я психолог»',                          course: 'Терапия ПТСР методом пролонгированной экспозиции',        file: '/diplomas/cert_ptsd.png',                type: 'image' },
+              { year: '2023', hours: '36 ч',  org: 'Универсальный университет',                        course: 'Тьюторские технологии в обучении',                        file: '/diplomas/cert_soe_tutor.jpg',           type: 'image' },
+              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Психологическая помощь при переживании кризисных ситуаций', file: '/diplomas/cert_lfdmgu_crisis.png',      type: 'image' },
+              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Противодействие вовлечению учащихся в деструктивные группы', file: '/diplomas/cert_mgu_groups.png',    type: 'image' },
+            ].map(item => (
+              <button
+                data-file={item.file} data-type={item.type}
+                class="diploma-btn w-full flex gap-4 bg-white rounded-xl px-5 py-3 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
+              >
+                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-gray-700 text-base">{item.course}</span>
+                  <span class="text-gray-400 text-base"> — {item.org}</span>
+                </div>
+                {item.hours && <span class="text-gray-400 text-sm flex-shrink-0 self-center">{item.hours}</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- В процессе -->
+        <div class="pt-2">
+          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">В процессе прохождения</p>
+          <div class="space-y-2">
+            {[
+              { year: '2026', org: 'Поведенческая компания',  course: 'Психиатрия для психологов' },
+              { year: '2026', org: 'МАНП',                    course: 'КПТ расстройства пищевого поведения' },
+              { year: '2026', org: 'МАНП',                    course: 'КПТ суицидального и самоповреждающего поведения' },
+              { year: '2026', org: 'Настасья Крысько, Alter', course: 'Преднамеренная практика, навыки эффективности психотерапевта' },
+              { year: '2025', org: 'МИП',                     course: 'Психология и навыки консультирования' },
+            ].map(item => (
+              <div class="w-full flex gap-4 bg-beige-50 rounded-xl px-5 py-3 border border-beige-100 text-left">
+                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-gray-700 text-base">{item.course}</span>
+                  <span class="text-gray-400 text-base"> — {item.org}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Диплом модал -->
+    <div id="diploma-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+      <div class="relative w-full max-w-3xl max-h-[90vh] flex flex-col">
+        <button id="diploma-close" class="absolute -top-9 right-0 text-white/80 text-sm hover:text-white transition-colors">Закрыть ✕</button>
+        <div id="diploma-content" class="rounded-2xl overflow-hidden bg-white flex-1 min-h-0"></div>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById('diploma-modal');
+      const content = document.getElementById('diploma-content');
+      const closeBtn = document.getElementById('diploma-close');
+
+      document.querySelectorAll('.diploma-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const file = (btn as HTMLElement).dataset.file!;
+          const type = (btn as HTMLElement).dataset.type!;
+          if (type === 'image') {
+            content!.innerHTML = `<img src="${file}" class="w-full h-full object-contain max-h-[80vh]" />`;
+          } else {
+            content!.innerHTML = `<iframe src="${file}" class="w-full" style="height:80vh;"></iframe>`;
+          }
+          modal!.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      const close = () => {
+        modal!.classList.add('hidden');
+        content!.innerHTML = '';
+        document.body.style.overflow = '';
+      };
+
+      closeBtn!.addEventListener('click', close);
+      modal!.addEventListener('click', e => { if (e.target === modal) close(); });
+    </script>
+
+  </div>
+  <div class="max-w-4xl mx-auto px-6 pb-16">
     <section class="text-center py-8 bg-beige-100 rounded-2xl">
       <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
       <p class="text-gray-500 mb-6">Первая консультация — шаг к переменам</p>
       <BookButton size="lg" />
     </section>
   </div>
+  <VideoWidget src="/how_can_i_help.mp4" />
 </PageLayout>
