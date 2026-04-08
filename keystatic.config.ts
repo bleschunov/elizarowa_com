@@ -35,6 +35,7 @@ export default config({
             image: {
               directory: 'public/images/posts',
               publicPath: '/images/posts',
+              transformFilename: (filename) => filename.replace(/\s+/g, '-'),
             },
           },
         }),
