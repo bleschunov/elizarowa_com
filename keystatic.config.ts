@@ -30,7 +30,7 @@ export default config({
         }),
         excerpt: fields.text({ label: 'Краткое описание', multiline: true }),
         content: fields.markdoc({
-          label: 'Контент',
+          label: 'Контен',
           options: {
             image: {
               directory: 'public/images/posts',
