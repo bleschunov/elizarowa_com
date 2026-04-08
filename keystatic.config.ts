@@ -29,7 +29,15 @@ export default config({
           publicPath: '/images/posts',
         }),
         excerpt: fields.text({ label: 'Краткое описание', multiline: true }),
-        content: fields.markdoc({ label: 'Контент' }),
+        content: fields.markdoc({
+          label: 'Контент',
+          options: {
+            image: {
+              directory: 'public/images/posts',
+              publicPath: '/images/posts',
+            },
+          },
+        }),
       },
     }),
     products: collection({
