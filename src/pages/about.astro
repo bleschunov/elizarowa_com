@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import BookButton from '../components/BookButton.astro';
+import ConsultationButton from '../components/ConsultationButton';
 import VideoWidget from '../components/VideoWidget.astro';
 import { Image } from 'astro:assets';
 import kateAbout from '../assets/kate_about.jpeg';
@@ -128,9 +128,11 @@ import kateAbout from '../assets/kate_about.jpeg';
         </div>
         <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
           <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Индивидуальная консультация</div>
-          <p class="text-gray-600 text-base leading-relaxed">
+          <p class="text-gray-600 text-base leading-relaxed mb-3">
             Тревожные состояния, внутреннее напряжение, ощущение тупика и потеря ориентиров. Онлайн, 1 раз в неделю.
           </p>
+          <p class="text-gray-800 font-semibold text-base">6 000 ₽ <span class="text-gray-400 font-normal">/ 65 €</span></p>
+          <p class="text-gray-400 text-sm">Картой или USDT</p>
         </div>
       </div>
 
@@ -155,7 +157,7 @@ import kateAbout from '../assets/kate_about.jpeg';
     <section class="text-center py-8 bg-beige-100 rounded-2xl mb-16">
       <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
       <p class="text-gray-500 mb-6">Первая консультация — шаг к переменам</p>
-      <BookButton size="lg" />
+      <ConsultationButton client:load size="lg" />
     </section>
 
     <!-- Опыт работы -->
@@ -197,7 +199,8 @@ import kateAbout from '../assets/kate_about.jpeg';
 
     <!-- Образование -->
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Образование</h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-1">Образование</h2>
+      <p class="text-gray-400 text-sm mb-4">Нажмите на диплом или сертификат, чтобы посмотреть скан</p>
       <div class="space-y-3">
         <!-- Высшее -->
         <button
@@ -306,7 +309,7 @@ import kateAbout from '../assets/kate_about.jpeg';
     <section class="text-center py-8 bg-beige-100 rounded-2xl">
       <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
       <p class="text-gray-500 mb-6">Первая консультация — шаг к переменам</p>
-      <BookButton size="lg" />
+      <ConsultationButton client:load size="lg" />
     </section>
   </div>
   <VideoWidget src="/how_can_i_help.mp4" />

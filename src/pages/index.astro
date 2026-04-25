@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialIcons from '../components/SocialIcons.astro';
+import ConsultationButton from '../components/ConsultationButton';
 import { Image } from 'astro:assets';
 import kateMain from '../assets/kate_main.jpeg';
 ---
@@ -44,14 +45,7 @@ import kateMain from '../assets/kate_main.jpeg';
       <p class="text-white/90 text-base font-semibold mt-1 drop-shadow">
         психолог для подростков и взрослых
       </p>
-      <a
-        href="https://t.me/ekaterina_elizarowa"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block mt-4 bg-white text-gray-800 text-lg font-bold px-8 py-3 rounded-lg hover:bg-beige-50 transition-colors"
-      >
-        Записаться
-      </a>
+      <ConsultationButton client:load buttonClass="inline-block mt-4 bg-white text-gray-800 text-lg font-bold px-8 py-3 rounded-lg hover:bg-beige-50 transition-colors" />
     </div>
   </div>
 
@@ -79,14 +73,7 @@ import kateMain from '../assets/kate_main.jpeg';
 
     <!-- Nav buttons in the frame -->
     <nav class="flex items-center gap-12 pt-6 pb-1 px-1 flex-shrink-0">
-      <a
-        href="https://t.me/ekaterina_elizarowa"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors"
-      >
-        Записаться
-      </a>
+      <ConsultationButton client:load buttonClass="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors" />
       <a href="/about" class="text-gray-800 text-3xl font-bold hover:text-beige-700 transition-colors">
         Обо мне
       </a>

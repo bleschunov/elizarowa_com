@@ -1,4 +1,6 @@
 ---
+import ConsultationButton from './ConsultationButton';
+
 const navLinks = [
   { href: '/', label: 'Главная' },
   { href: '/about', label: 'Обо мне' },
@@ -38,14 +40,7 @@ const currentPath = Astro.url.pathname;
           </a>
         ))}
       </div>
-      <a
-        href="https://t.me/ekaterina_elizarowa"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-beige-700 text-white text-sm px-4 py-2 rounded-full hover:bg-beige-800 transition-colors"
-      >
-        Записаться
-      </a>
+      <ConsultationButton client:load size="sm" />
     </nav>
     <button id="menu-toggle" class="md:hidden text-gray-700 p-2" aria-label="Меню">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,14 +60,7 @@ const currentPath = Astro.url.pathname;
           {link.label}
         </a>
       ))}
-      <a
-        href="https://t.me/ekaterina_elizarowa"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-beige-700 text-white text-sm px-4 py-2 rounded-full hover:bg-beige-800 transition-colors text-center mt-2"
-      >
-        Записаться
-      </a>
+      <ConsultationButton client:load buttonClass="bg-beige-700 text-white text-sm px-4 py-2 rounded-full hover:bg-beige-800 transition-colors text-center mt-2" />
       <div class="flex items-center gap-4 mt-2 pt-3 border-t border-beige-200">
         {socialLinks.map(s => (
           <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} class="text-gray-400 hover:text-beige-700 transition-colors">
