@@ -12,6 +12,18 @@ export default {
     },
     extend: {
       colors: {
+        gold: {
+          50:  '#fdf8ee',
+          100: '#f8eccc',
+          200: '#f0d48a',
+          300: '#e8bc52',
+          400: '#dfa32a',
+          500: '#c4873a',
+          600: '#a86d2e',
+          700: '#8a5523',
+          800: '#6e421c',
+          900: '#593516',
+        },
         beige: {
           50: '#faf8f5',
           100: '#f5f0e8',
@@ -30,5 +42,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
+        },
+      });
+    },
+  ],
 };
