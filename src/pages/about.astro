@@ -10,29 +10,29 @@ import kateAbout from '../assets/kate_about.jpeg';
   <div class="max-w-4xl mx-auto px-6 py-12">
 
     <!-- Hero -->
-    <section class="flex flex-col md:flex-row gap-10 items-start mb-16">
-      <div class="w-full md:w-80 flex-shrink-0">
-        <div class="aspect-[3/4] rounded-lg overflow-hidden bg-beige-200">
-          <Image src={kateAbout} alt="Екатерина Елизарова" class="w-full h-full object-cover object-center" />
+    <section class="flex flex-col md:flex-row gap-10 items-stretch mb-16">
+      <div class="w-full md:w-96 flex-shrink-0">
+        <div class="rounded-lg overflow-hidden bg-beige-200 h-full">
+          <Image src={kateAbout} alt="Екатерина Елизарова" class="w-full h-full object-cover object-top" />
         </div>
       </div>
       <div class="flex-1">
         <h1 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-3">Екатерина Елизарова</h1>
-        <p class="text-beige-700 font-medium">Психолог для подростков и их мам</p>
+        <p class="text-beige-700 font-medium">Когнитивно–поведенческий психолог</p>
                 <p class="text-gray-500 leading-relaxed mb-6">
-          Член Ассоциации когнитивно–бихевиоральных терапевтов.<br/>
+          <a href="https://russian-cbt.ru/team/sultanova-renata-ildarovna/" target="_blank" rel="noopener noreferrer" class="hover:text-beige-700 transition-colors underline underline-offset-2">Член Ассоциации когнитивно–бихевиоральных терапевтов.</a><br/>
         </p>
         <p class="text-gray-700 text-lg leading-relaxed mb-4">
-          4 года помогаю подросткам и их родителям перестать жить в режиме постоянной тревоги «что опять происходит?» и начать понимать, что на самом деле стоит за поведением подростка.
+          4 года помогаю людям перестать жить в режиме фоновой тревоги и внутреннего напряжения — и начать лучше понимать себя и то, что происходит вокруг.
         </p>
         <p class="text-gray-700 text-lg leading-relaxed mb-4">
-В работе это означает: меньше бессонных ночей и прокручивания разговоров в голове, меньше ощущения «я что-то делаю не так», и больше спокойствия в сложных разговорах.
+          В работе это означает: меньше бессонных ночей и прокручивания ситуаций в голове, меньше ощущения «я что-то делаю не так», и больше опоры в сложных моментах.
         </p>
         <p class="text-gray-700 text-lg leading-relaxed mb-4">
-Работала в кризисных службах, частных школах и сопровождала студентов в университете — со мной учатся выдерживать непростые ситуации и находить в них опору.
+          Работала в кризисных службах, частных школах и сопровождала студентов в университете — с разными людьми и запросами, в том числе в острых ситуациях.
         </p>
         <p class="text-gray-700 text-lg leading-relaxed mb-4">
-Коллеги отмечают мою системность и мягкость. Для родителей и подростков это означает не хаотичные советы, а понятный и безопасный план действий.
+          Коллеги отмечают мою системность и мягкость. Это означает не хаотичные советы, а понятный и безопасный план действий.
         </p>
 
       </div>
@@ -41,7 +41,7 @@ import kateAbout from '../assets/kate_about.jpeg';
     <!-- ОПЫТ И ОБРАЗОВАНИЕ ПЕРЕМЕЩЕНЫ ВНИЗ -->
 
     <!-- Запросы -->
-    <section class="mb-12">
+    <section id="requests" class="mb-12 scroll-mt-24">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Запросы, с которыми я работаю</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {[
@@ -63,7 +63,7 @@ import kateAbout from '../assets/kate_about.jpeg';
     </section>
 
     <!-- Как я работаю -->
-    <section class="mb-12">
+    <section id="how" class="mb-12 scroll-mt-24">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">Как я работаю</h2>
 
       <div class="mb-4">
@@ -115,23 +115,25 @@ import kateAbout from '../assets/kate_about.jpeg';
     </section>
 
     <!-- Форматы работы -->
-    <section class="mb-16">
+    <section id="formats" class="mb-16 scroll-mt-24">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">Форматы работы</h2>
 
       <p class="text-gray-400 text-sm uppercase tracking-wide mb-3">Для родителей и подростков</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
           <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Знакомство</div>
-          <p class="text-gray-600 text-base leading-relaxed">
+          <p class="text-gray-600 text-base leading-relaxed mb-3">
             Встреча онлайн, 15–30 минут. Обсудим вашу ситуацию, расскажу, чем и в какие сроки могу помочь.
           </p>
+          <p class="text-gray-800 font-semibold text-base">3 000 ₽ <span class="text-gray-400 font-normal">/ 40 $</span></p>
+          <p class="text-gray-400 text-sm">Картой или USDT</p>
         </div>
         <div class="bg-white rounded-2xl p-6 border border-beige-100 shadow-sm">
           <div class="text-beige-600 font-bold text-base mb-3 uppercase tracking-wide">Индивидуальная консультация</div>
           <p class="text-gray-600 text-base leading-relaxed mb-3">
             Тревожные состояния, внутреннее напряжение, ощущение тупика и потеря ориентиров. Онлайн, 1 раз в неделю.
           </p>
-          <p class="text-gray-800 font-semibold text-base">6 000 ₽ <span class="text-gray-400 font-normal">/ 65 €</span></p>
+          <p class="text-gray-800 font-semibold text-base">6 000 ₽ <span class="text-gray-400 font-normal">/ 80 $</span></p>
           <p class="text-gray-400 text-sm">Картой или USDT</p>
         </div>
       </div>
@@ -160,8 +162,162 @@ import kateAbout from '../assets/kate_about.jpeg';
       <ConsultationButton client:load size="lg" />
     </section>
 
+    <!-- Образование -->
+    <section id="education" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Образование</h2>
+
+      <!-- Плитка дипломов -->
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 mb-6">
+        {[
+          { file: '/diplomas/degree_gaougn.jpg' },
+          { file: '/diplomas/cert_cbt_basics.jpg' },
+          { file: '/diplomas/cert_presto_tutor.jpg' },
+          { file: '/diplomas/cert_cbt_depression.jpg' },
+          { file: '/diplomas/cert_sand_therapy.jpg' },
+          { file: '/diplomas/cert_teen_psychologist.jpg' },
+          { file: '/diplomas/cert_cbt_intro.jpg' },
+          { file: '/diplomas/cert_disc.jpg' },
+          { file: '/diplomas/cert_ptsd.png' },
+          { file: '/diplomas/cert_soe_tutor.jpg' },
+          { file: '/diplomas/cert_mgu_crisis.png' },
+          { file: '/diplomas/cert_mgu_groups.png' },
+        ].map(item => (
+          <button
+            data-file={item.file} data-type="image"
+            class="diploma-btn aspect-[3/4] rounded-lg overflow-hidden border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all bg-beige-50"
+          >
+            <img src={item.file} alt="" class="w-full h-full object-contain" />
+          </button>
+        ))}
+      </div>
+
+      <div class="space-y-3">
+        <!-- Высшее -->
+        <button
+          data-file="/diplomas/degree_gaougn.jpg" data-type="image"
+          class="diploma-btn w-full flex gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
+        >
+          <span class="text-beige-600 font-semibold text-base flex-shrink-0 pt-0.5 whitespace-nowrap">2019–2023</span>
+          <p class="text-gray-600 text-base flex-1">Психология, бакалавр с отличием — ГАУГН при РАН</p>
+          <span class="text-gray-400 text-sm flex-shrink-0 self-center">3700 ч</span>
+        </button>
+
+        <!-- Доп. образование -->
+        <div class="pt-2">
+          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">Дополнительное образование</p>
+          <div class="space-y-2">
+            {[
+              { year: '2025', hours: '180 ч', org: 'Поведенческая компания',                            course: 'Основы когнитивно–поведенческой терапии',                  file: '/diplomas/cert_cbt_basics.jpg',         type: 'image' },
+              { year: '2025', hours: '256 ч', org: 'Институт ПрЭСТО',                                   course: 'Тьютор',                                                  file: '/diplomas/cert_presto_tutor.jpg',        type: 'image' },
+              { year: '2025', hours: '36 ч',  org: 'Международная академия научной психологии',         course: 'КПТ депрессивных расстройств',                            file: '/diplomas/cert_cbt_depression.jpg',      type: 'image' },
+              { year: '2025', hours: '16 ч',  org: 'Институт Иматон',                                   course: 'Песочная терапия Юнга в работе с детьми и подростками',  file: '/diplomas/cert_sand_therapy.jpg',        type: 'image' },
+              { year: '2025', hours: null,    org: 'МИП',                                                 course: 'Психология и навыки консультирования',                    file: null,                                     type: null },
+              { year: '2024', hours: '270 ч', org: 'Психодемия',                                        course: 'Подростковый психолог',                                   file: '/diplomas/cert_teen_psychologist.jpg',   type: 'image' },
+              { year: '2024', hours: '40 ч',  org: 'Международный институт психосоматического здоровья', course: 'Введение в когнитивно–поведенческую терапию',           file: '/diplomas/cert_cbt_intro.jpg',           type: 'image' },
+              { year: '2024', hours: null,    org: 'Insunrise Psychometrix',                            course: 'Эффективное командное взаимодействие по методике DISC',  file: '/diplomas/cert_disc.jpg',                type: 'image' },
+              { year: '2024', hours: '2 ч',   org: 'Сообщество «Я психолог»',                          course: 'Терапия ПТСР методом пролонгированной экспозиции',        file: '/diplomas/cert_ptsd.png',                type: 'image' },
+              { year: '2023', hours: '36 ч',  org: 'Универсальный университет',                        course: 'Тьюторские технологии в обучении',                        file: '/diplomas/cert_soe_tutor.jpg',           type: 'image' },
+              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Психологическая помощь при переживании кризисных ситуаций', file: '/diplomas/cert_mgu_crisis.png',      type: 'image' },
+              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Противодействие вовлечению учащихся в деструктивные группы', file: '/diplomas/cert_mgu_groups.png',    type: 'image' },
+            ].map(item => item.file ? (
+              <button
+                data-file={item.file} data-type={item.type}
+                class="diploma-btn w-full flex gap-4 bg-white rounded-xl px-5 py-3 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
+              >
+                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-gray-700 text-base">{item.course}</span>
+                  <span class="text-gray-400 text-base"> — {item.org}</span>
+                </div>
+                {item.hours && <span class="text-gray-400 text-sm flex-shrink-0 self-center">{item.hours}</span>}
+              </button>
+            ) : (
+              <div class="w-full flex gap-4 bg-white rounded-xl px-5 py-3 border border-beige-100 shadow-sm text-left">
+                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-gray-700 text-base">{item.course}</span>
+                  <span class="text-gray-400 text-base"> — {item.org}</span>
+                </div>
+                {item.hours && <span class="text-gray-400 text-sm flex-shrink-0 self-center">{item.hours}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- В процессе -->
+        <div class="pt-2">
+          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">В процессе прохождения</p>
+          <div class="space-y-2">
+            {[
+              { year: '2026', org: 'Поведенческая компания',  course: 'Психиатрия для психологов' },
+              { year: '2026', org: 'МАНП',                    course: 'КПТ расстройства пищевого поведения' },
+              { year: '2026', org: 'МАНП',                    course: 'КПТ суицидального и самоповреждающего поведения' },
+              { year: '2026', org: 'Настасья Крысько, Alter', course: 'Преднамеренная практика, навыки эффективности психотерапевта' },
+            ].map(item => (
+              <div class="w-full flex gap-4 bg-beige-50 rounded-xl px-5 py-3 border border-beige-100 text-left">
+                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-gray-700 text-base">{item.course}</span>
+                  <span class="text-gray-400 text-base"> — {item.org}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы коллег -->
+    <section id="reviews" class="mb-12 scroll-mt-24">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-3">Отзывы коллег</h2>
+      <p class="text-gray-600 text-base mb-6">Вы можете написать коллегам напрямую, чтобы получить обратную связь обо мне как о специалисте.</p>
+      <div class="space-y-4">
+        {[
+          {
+            name: 'Елизавета Удилова',
+            role: 'Психотерапевт',
+            text: 'Реальный опыт работы с подростками. Комплексный, системный и глубокий подход к анализу проблем клиента, хорошая дотошность. При способности академично мыслить и изъясняться — есть и живость общения, и даже игривость. Рекомендую особенно зажатым подросткам.',
+            photo: '/reviews/colleague_1.jpg',
+            telegram: 'proffudilko',
+          },
+          {
+            name: 'Алиса',
+            role: 'Психотерапевт',
+            text: 'Высокое качество профессиональной подготовки — как теоретической, так и практической. Аналитический склад ума, глубокое погружение в причины и структуру состояния клиентов. Развитая эмпатия. Большой набор инструментов для работы, опыт со случаями разной степени сложности, навык конструктивного контакта с родителями, опора на нейробиологию. Стиль работы — бережно, с уважением к особенностям клиента, с выраженным компонентом психообразования.',
+            photo: '/reviews/colleague_2.jpg',
+            telegram: 'alisa_cbt',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-4 sm:p-6 border border-beige-100 shadow-sm">
+            <p class="text-gray-600 text-base leading-relaxed mb-4">«{item.text}»</p>
+            <div class="flex items-center gap-3">
+              <img src={item.photo} alt={item.name} class="w-10 h-10 rounded-full object-cover flex-shrink-0 bg-beige-100" />
+              <div class="flex-1">
+                <div class="text-gray-800 font-semibold text-base">{item.name}</div>
+                <div class="flex items-center justify-between">
+                  <span class="text-gray-400 text-sm">{item.role}</span>
+                  <a
+                    href={`https://t.me/${item.telegram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-1.5 text-beige-600 hover:text-beige-800 transition-colors text-sm font-medium"
+                  >
+                    <span class="hidden min-[400px]:inline sm:hidden">Написать в</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 flex-shrink-0 sm:hidden">
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    <span class="hidden sm:inline">Написать в Telegram</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <!-- Опыт работы -->
-    <section class="mb-12">
+    <section id="experience" class="mb-12 scroll-mt-24">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Опыт работы</h2>
       <div class="space-y-3">
         {[
@@ -194,76 +350,6 @@ import kateAbout from '../assets/kate_about.jpeg';
             <p class="text-gray-600 text-base leading-relaxed">{item.text}</p>
           </div>
         ))}
-      </div>
-    </section>
-
-    <!-- Образование -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-1">Образование</h2>
-      <p class="text-gray-400 text-sm mb-4">Нажмите на диплом или сертификат, чтобы посмотреть скан</p>
-      <div class="space-y-3">
-        <!-- Высшее -->
-        <button
-          data-file="/diplomas/degree_gaougn.jpg" data-type="image"
-          class="diploma-btn w-full flex gap-4 bg-white rounded-xl p-5 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
-        >
-          <span class="text-beige-600 font-semibold text-base flex-shrink-0 pt-0.5 whitespace-nowrap">2019–2023</span>
-          <p class="text-gray-600 text-base flex-1">Психология, бакалавр с отличием — ГАУГН при РАН [3700 часов]</p>
-        </button>
-
-        <!-- Доп. образование -->
-        <div class="pt-2">
-          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">Дополнительное образование</p>
-          <div class="space-y-2">
-            {[
-              { year: '2025', hours: '180 ч', org: 'Поведенческая компания',                            course: 'Основы когнитивно–поведенческой терапии',                  file: '/diplomas/cert_cbt_basics.jpg',         type: 'image' },
-              { year: '2025', hours: '256 ч', org: 'Институт ПрЭСТО',                                   course: 'Тьютор',                                                  file: '/diplomas/cert_presto_tutor.jpg',        type: 'image' },
-              { year: '2025', hours: '36 ч',  org: 'Международная академия научной психологии',         course: 'КПТ депрессивных расстройств',                            file: '/diplomas/cert_cbt_depression.jpg',      type: 'image' },
-              { year: '2025', hours: '16 ч',  org: 'Институт Иматон',                                   course: 'Песочная терапия Юнга в работе с детьми и подростками',  file: '/diplomas/cert_sand_therapy.jpg',        type: 'image' },
-              { year: '2024', hours: '270 ч', org: 'Психодемия',                                        course: 'Подростковый психолог',                                   file: '/diplomas/cert_teen_psychologist.jpg',   type: 'image' },
-              { year: '2024', hours: '40 ч',  org: 'Международный институт психосоматического здоровья', course: 'Введение в когнитивно–поведенческую терапию',           file: '/diplomas/cert_cbt_intro.jpg',           type: 'image' },
-              { year: '2024', hours: null,    org: 'Insunrise Psychometrix',                            course: 'Эффективное командное взаимодействие по методике DISC',  file: '/diplomas/cert_disc.jpg',                type: 'image' },
-              { year: '2024', hours: '2 ч',   org: 'Сообщество «Я психолог»',                          course: 'Терапия ПТСР методом пролонгированной экспозиции',        file: '/diplomas/cert_ptsd.png',                type: 'image' },
-              { year: '2023', hours: '36 ч',  org: 'Универсальный университет',                        course: 'Тьюторские технологии в обучении',                        file: '/diplomas/cert_soe_tutor.jpg',           type: 'image' },
-              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Психологическая помощь при переживании кризисных ситуаций', file: '/diplomas/cert_lfdmgu_crisis.png',      type: 'image' },
-              { year: '2022', hours: null,    org: 'МГУ им. М. В. Ломоносова',                         course: 'Противодействие вовлечению учащихся в деструктивные группы', file: '/diplomas/cert_mgu_groups.png',    type: 'image' },
-            ].map(item => (
-              <button
-                data-file={item.file} data-type={item.type}
-                class="diploma-btn w-full flex gap-4 bg-white rounded-xl px-5 py-3 border border-beige-100 shadow-sm hover:border-beige-300 hover:shadow-md transition-all text-left"
-              >
-                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
-                <div class="flex-1 min-w-0">
-                  <span class="text-gray-700 text-base">{item.course}</span>
-                  <span class="text-gray-400 text-base"> — {item.org}</span>
-                </div>
-                {item.hours && <span class="text-gray-400 text-sm flex-shrink-0 self-center">{item.hours}</span>}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <!-- В процессе -->
-        <div class="pt-2">
-          <p class="text-gray-400 text-sm uppercase tracking-wide mb-2 px-1">В процессе прохождения</p>
-          <div class="space-y-2">
-            {[
-              { year: '2026', org: 'Поведенческая компания',  course: 'Психиатрия для психологов' },
-              { year: '2026', org: 'МАНП',                    course: 'КПТ расстройства пищевого поведения' },
-              { year: '2026', org: 'МАНП',                    course: 'КПТ суицидального и самоповреждающего поведения' },
-              { year: '2026', org: 'Настасья Крысько, Alter', course: 'Преднамеренная практика, навыки эффективности психотерапевта' },
-              { year: '2025', org: 'МИП',                     course: 'Психология и навыки консультирования' },
-            ].map(item => (
-              <div class="w-full flex gap-4 bg-beige-50 rounded-xl px-5 py-3 border border-beige-100 text-left">
-                <span class="text-beige-600 font-semibold text-base flex-shrink-0 w-10">{item.year}</span>
-                <div class="flex-1 min-w-0">
-                  <span class="text-gray-700 text-base">{item.course}</span>
-                  <span class="text-gray-400 text-base"> — {item.org}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
 
@@ -305,6 +391,50 @@ import kateAbout from '../assets/kate_about.jpeg';
     </script>
 
   </div>
+
+  <!-- Оглавление (десктоп) -->
+  <nav id="toc" class="hidden xl:block fixed top-24 right-6 2xl:right-[calc((100vw-896px)/2-160px)] w-36 space-y-1.5">
+    {[
+      { href: '#requests',   label: 'Запросы' },
+      { href: '#how',        label: 'Как я работаю' },
+      { href: '#formats',    label: 'Форматы' },
+      { href: '#education',  label: 'Образование' },
+      { href: '#reviews',    label: 'Отзывы' },
+      { href: '#experience', label: 'Опыт работы' },
+    ].map(item => (
+      <a
+        href={item.href}
+        data-toc-link
+        class="block text-sm text-gray-400 hover:text-beige-700 transition-colors leading-snug"
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+
+  <script>
+    const links = document.querySelectorAll('[data-toc-link]');
+    const ids = ['requests', 'how', 'formats', 'education', 'reviews', 'experience'];
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+    const activate = (href: string) => {
+      links.forEach(l => {
+        const active = (l as HTMLAnchorElement).getAttribute('href') === href;
+        l.classList.toggle('text-beige-700', active);
+        l.classList.toggle('font-medium', active);
+        l.classList.toggle('text-gray-400', !active);
+      });
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) activate(`#${entry.target.id}`);
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
   <div class="max-w-4xl mx-auto px-6 pb-16">
     <section class="text-center py-8 bg-beige-100 rounded-2xl">
       <h2 class="text-2xl font-semibold text-gray-800 mb-3">Готовы начать?</h2>
