@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import kateAbout from '../assets/kate_about.jpeg';
+---
+
+<BaseLayout
+  title="Подросток избегает учёбы — что делать родителям | Екатерина Елизарова"
+  description="Бесплатная диагностическая встреча с подростковым психологом. Разберём вашу ситуацию и составим план."
+>
+  <main class="bg-white min-h-screen font-sans text-gray-800">
+
+    <!-- HERO -->
+    <section class="bg-beige-50 pt-12 pb-10 px-5">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="inline-block bg-gray-800 text-white text-sm font-semibold px-4 py-1.5 rounded mb-6 tracking-wide uppercase">
+          Бесплатная диагностическая встреча
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold leading-tight text-gray-900 mb-4">
+          Ваш подросток перестал учиться —<br class="hidden md:block" />
+          и вы уже не знаете, что делать?
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+          Разговоры, уговоры и наказания не работают. Потому что настоящая причина — внутри ребёнка, а не снаружи. На бесплатной встрече разберём вашу ситуацию и составим план.
+        </p>
+        <a
+          href="#zapisatsya"
+          class="inline-block bg-gray-900 text-white text-base font-bold px-8 py-4 rounded-lg hover:bg-gray-700 transition-colors"
+        >
+          Записаться на встречу →
+        </a>
+        <p class="text-sm text-gray-400 mt-3">Не нужно заранее готовиться и формулировать проблему</p>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="py-12 px-5 bg-white">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+          Знакомая ситуация?
+        </h2>
+        <ul class="space-y-4">
+          {[
+            'Ребёнок пропускает уроки или вообще отказывается идти в школу',
+            'Оценки резко упали, накопились долги',
+            'Каждый разговор об учёбе заканчивается скандалом',
+            'Ребёнок закрылся и перестал рассказывать, что происходит',
+            'Вы чувствуете тревогу, но не можете объяснить, в чём проблема',
+          ].map(item => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-beige-200 flex items-center justify-center">
+                <svg class="w-3 h-3 text-beige-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+              <span class="text-gray-700 text-base">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- WHY IT DOESN'T WORK -->
+    <section class="py-12 px-5 bg-beige-50">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Почему обычные методы не помогают
+        </h2>
+        <p class="text-gray-700 text-base leading-relaxed mb-4">
+          Большинство родителей идут по одному пути: сначала уговоры и объяснения, потом угрозы и наказания. Но это не работает. И дело не в том, что родители делают что-то неправильно.
+        </p>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Все эти методы направлены на внешнее — оценки, поведение, посещаемость. А настоящая причина всегда <strong>внутри самого подростка</strong>: его мотивация, страхи, отношения с учителями и сверстниками. Без работы с этим любое внешнее давление только усиливает сопротивление.
+        </p>
+      </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section class="py-12 px-5 bg-white">
+      <div class="max-w-2xl mx-auto">
+        <div class="border-l-4 border-beige-400 pl-6">
+          <p class="text-sm font-semibold text-beige-700 uppercase tracking-wide mb-3">Случай из практики</p>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Ваня, 16 лет</h2>
+          <p class="text-gray-700 text-base leading-relaxed mb-4">
+            4 месяца регулярных прогулов. Оценки падают. Каждый разговор с родителями заканчивается на повышенных тонах. Родители обратились ко мне, когда уже не знали, что делать.
+          </p>
+          <p class="text-gray-700 text-base leading-relaxed mb-6">
+            Мы начали работать вместе. После нескольких встреч Ваня сформулировал для себя долгосрочные цели, составил распорядок дня и выработал тактику общения с учителями, которые к нему придирались.
+          </p>
+          <div class="bg-beige-50 rounded-xl p-5">
+            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Через 3 месяца работы:</p>
+            <ul class="space-y-2">
+              {[
+                'Посещает школу без пропусков',
+                'Закрыл большую часть долгов по учёбе',
+                'Начал общаться со сверстниками в реальной жизни',
+              ].map(result => (
+                <li class="flex items-center gap-2 text-gray-800 font-medium">
+                  <span class="text-beige-600">✓</span>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKER -->
+    <section class="py-12 px-5 bg-beige-50">
+      <div class="max-w-2xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+          <div class="flex-shrink-0">
+            <Image
+              src={kateAbout}
+              alt="Екатерина Елизарова"
+              class="w-40 h-40 md:w-48 md:h-48 rounded-2xl object-cover object-top shadow-md"
+            />
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-beige-700 uppercase tracking-wide mb-2">Психолог</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">Екатерина Елизарова</h2>
+            <p class="text-gray-700 text-base leading-relaxed mb-4">
+              Я специализируюсь на подростках, которые избегают учёбы и закрываются от родителей. Работаю именно с такими случаями — когда привычные методы уже не помогают и кажется, что ребёнок вообще перестал слышать.
+            </p>
+            <p class="text-gray-700 text-base leading-relaxed">
+              Подростки все разные и сталкиваются с разными трудностями: от сложностей в общении до страхов перед будущим и поступлением. Одного рецепта нет — всегда нужен индивидуальный подход.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT HAPPENS AT THE MEETING -->
+    <section class="py-12 px-5 bg-white">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+          Что будет на встрече
+        </h2>
+        <div class="space-y-6">
+          {[
+            { num: '1', title: 'Разберём вашу ситуацию', text: 'Я задам вопросы и помогу понять, что именно происходит с вашим ребёнком — даже если сейчас вы не можете это сформулировать.' },
+            { num: '2', title: 'Объясню причины', text: 'Расскажу, что стоит за нежеланием учиться в вашем конкретном случае и почему обычные методы не работают.' },
+            { num: '3', title: 'Составлю персональный план', text: 'Вы уйдёте с чётким пониманием, что делать дальше — что можно попробовать самостоятельно и как выстроить работу с психологом.' },
+          ].map(item => (
+            <div class="flex gap-5">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-900 text-white font-bold flex items-center justify-center text-lg">
+                {item.num}
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-base mb-1">{item.title}</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CALENDLY -->
+    <section id="zapisatsya" class="py-14 px-5 bg-gray-900">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+          Не ждите, пока ситуация усугубится
+        </h2>
+        <p class="text-gray-300 mb-8 text-base max-w-lg mx-auto">
+          Выберите удобное время для бесплатной диагностической встречи. Не нужно заранее готовиться — приходите с тем, что есть.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/bleschunov-dmitry/30min?embed_domain=elizarowa.com&embed_type=Inline" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+    </section>
+
+    <script>
+      window.addEventListener('message', function (e) {
+        if (e.origin !== 'https://calendly.com') return;
+        const data = e.data;
+        if (data.event === 'calendly.event_scheduled') {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'calendly_booking',
+            calendly_event_name: data.payload?.event_type?.name ?? '',
+          });
+        }
+      });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="py-6 px-5 bg-gray-900 border-t border-gray-700 text-center">
+      <p class="text-gray-500 text-sm">© 2026 Екатерина Елизарова · <a href="/" class="hover:text-gray-300 transition-colors">elizarowa.com</a></p>
+    </footer>
+
+  </main>
+</BaseLayout>
