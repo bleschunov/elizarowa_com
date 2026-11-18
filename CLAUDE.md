@@ -2,87 +2,62 @@
 
 ## Что это за проект
 
-Сайт психолога Екатерины Елизаровой. Astro SSR + React + Tailwind CSS + Keystatic CMS.
+Сайт психолога Екатерины Елизаровой. **Чистая статика без сборки**: HTML + CSS + ванильный JS
+в папке `site/`, которая целиком синхронизируется в приватный S3 и раздаётся через CloudFront.
 
-Домен: elizarowa.com
-VPS: Ubuntu, пользователь `deploy`, путь `/var/www/elizarowa-com`
-Репо: github.com/bleschunov/elizarowa_com (приватное)
+Домен: elizarowa.com (регистратор — Squarespace, DNS — Route 53).
+Репо: github.com/bleschunov/elizarowa_com (приватное).
 
-## Стек
+## Принципы (не нарушать)
 
-- **Astro** — SSR, `output: 'server'`, адаптер `@astrojs/node` (standalone)
-- **React** — клиентские компоненты (`client:load`): `OrderModal.tsx`, `ProductCard.tsx`
-- **Tailwind CSS** — кастомная бежевая палитра `beige-50..900`, шрифт Inter
-- **@astrojs/markdoc** — статьи в формате `.mdoc`
-- **Keystatic CMS** — headless CMS, хранит контент в GitHub репо
-- **PM2** — процесс-менеджер на сервере
-- **Nginx** — реверс-прокси, проксирует на порт 4321
-- **Certbot** — SSL-сертификат Let's Encrypt
+- Нет `package.json`, бандлеров, фреймворков, SSR, CMS. Не добавлять их обратно.
+- Нет секретов и `.env` в репозитории. Сайт не должен содержать токенов: всё, что в `site/`, публично.
+- Нет серверной логики: никаких форм с отправкой, API-эндпоинтов, ботов. Связь с Катей —
+  только ссылкой на Telegram `https://t.me/ekaterina_elizarowa` (окно `#contact-dialog`).
+- Никаких inline-`<script>`: JS только в `site/assets/js/` (задел под строгий CSP).
 
-## Структура контента
+## Структура
 
-- `src/content/posts/*.mdoc` — статьи (title, date, cover, excerpt, content)
-- `src/content/products/*.json` — материалы (title, description, price, cover)
-- Схемы коллекций: `src/content/config.ts`
-- `date` в статьях — опциональный, тип `z.string().or(z.date().transform(...))`
+- `site/**/index.html` — страницы; URL без расширения (`/about`, `/blog/<slug>`).
+  CloudFront Function (`infra/site.yaml` → `RouterFunction`) дописывает `/index.html`
+  и редиректит любой другой Host (www, *.cloudfront.net) на `https://elizarowa.com`.
+- Шапка, футер, `<head>` и окно `#contact-dialog` **продублированы в каждой странице**.
+  Меняя их, меняйте во всех `site/**/*.html` (кроме `index.html` и `podrostki/` — там своя вёрстка).
+- `site/assets/js/main.js` — все интерактивы, каждый блок проверяет наличие элементов:
+  `[data-contact]` (+ `data-product="…"`) открывает окно «напишите в Telegram»,
+  `[data-diploma="путь"]` — просмотр диплома, оглавление и видео-виджет на `/about`.
+- `site/assets/css/tailwind.css` — **скомпилированный** Tailwind 3.4 (палитра `beige-*`, `gold-*`,
+  шрифт Inter). Не править руками. При появлении новых классов — пересобрать
+  командой из README («Стили»), конфиг в `tools/tailwind/`.
+- `site/assets/css/site.css` — ручные стили (шрифты, `.article-content`, диалоги, виджет).
+- Статьи: `site/blog/<slug>/index.html`, текст в `<div class="article-content">`;
+  карточка статьи вручную добавляется в начало списка в `site/blog/index.html`.
 
-## Keystatic CMS
+## Инфраструктура
 
-Два режима, переключаются автоматически в `keystatic.config.ts`:
-
-- **local** — когда `import.meta.env.DEV === true` и `PUBLIC_KEYSTATIC_STORAGE` не задан. Без авторизации, пишет файлы на диск. Для локальной разработки.
-- **github** — в продакшне всегда, или если `PUBLIC_KEYSTATIC_STORAGE=github`. Хранит контент через GitHub API, требует OAuth.
-
-Важно: Keystatic в GitHub mode работает только с дефолтной веткой репо (main).
-
-CMS доступна по `/keystatic`. В продакшне требует HTTPS — `crypto.subtle` не работает на HTTP.
+- `infra/site.yaml` — CloudFormation-стек `elizarowa-com` в `us-east-1`: Route 53 (с почтой
+  Mailgun: MX/SPF/DKIM/DMARC), ACM, S3 (приватный, OAC), CloudFront, политика для OIDC-роли.
+  Параметр `EnableSite`: `false` — только DNS (сайт на старом IP), `true` — всё.
+- `infra/deploy.sh dns|site|status` — применить шаблон (`DEPLOY_ROLE_NAME` — имя OIDC-роли).
+- DNS-записи меняются только через шаблон, не в консоли.
+- `scripts/setup-aws-wizard.sh` — одноразовый мастер переезда с VPS (Squarespace NS → Route 53).
 
 ## Деплой
 
-GitHub Actions (`.github/workflows/deploy.yml`) запускается при коммите в `main` по путям `src/content/**`, `src/pages/**` и т.д.
+`.github/workflows/deploy.yml`: пуш в `main` по `site/**` (или вручную) → OIDC-вход в AWS →
+`aws s3 sync site/` (сначала файлы, потом HTML) → инвалидация `/*`.
+Секреты репозитория GitHub Actions: `AWS_ROLE_ARN`, `S3_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`
+(записывает `scripts/setup-aws-wizard.sh`; значения — outputs стека, `infra/deploy.sh status`).
+Actions закреплены по SHA коммита — при обновлении менять SHA и комментарий с версией.
 
-Script на сервере:
-```bash
-export NVM_DIR="/home/deploy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-cd $DEPLOY_PATH
-git pull origin main
-npm install --omit=dev
-NODE_OPTIONS="--max-old-space-size=1536" npm run build
-pm2 restart elizarowa-com
-```
+## Локальный просмотр
 
-`NODE_OPTIONS="--max-old-space-size=1536"` — обязателен, VPS с 2GB RAM, без флага Node падает с OOM при сборке.
+`cd site && python3 -m http.server 8000` → http://localhost:8000
 
-## Переменные окружения
+## Известные нюансы
 
-```env
-TELEGRAM_BOT_TOKEN=         # бот для заявок на материалы
-TELEGRAM_CHAT_ID=           # куда слать уведомления
-
-PUBLIC_KEYSTATIC_STORAGE=github   # включить github mode
-PUBLIC_GITHUB_REPO_OWNER=bleschunov
-PUBLIC_GITHUB_REPO_NAME=elizarowa_com
-
-KEYSTATIC_GITHUB_CLIENT_ID=       # OAuth App на GitHub
-KEYSTATIC_GITHUB_CLIENT_SECRET=
-KEYSTATIC_SECRET=                 # случайная строка 32+ символа для подписи сессий
-```
-
-## Известные проблемы и решения
-
-- **Статьи не отображаются** — скорее всего ошибка в frontmatter (дата, кавычки в title) или коллекция не синхронизирована
-- **`crypto.subtle` / `digest` ошибка в Keystatic** — сайт открыт по HTTP, нужен HTTPS
-- **`npm: command not found` в GitHub Actions** — NVM не инициализируется в неинтерактивной сессии, нужно явно подгружать через `source $NVM_DIR/nvm.sh`
-- **OOM при сборке** — добавить `NODE_OPTIONS="--max-old-space-size=1536"`
-- **Keystatic не видит статьи** — контент должен быть в дефолтной ветке (main)
-- **Certbot Connection refused** — проверить `server_name` в nginx конфиге (должен быть домен, не IP) и что DNS уже обновился
-
-## Страницы
-
-- `/` — главная (два layout: мобильный fullscreen + десктоп с рамкой)
-- `/about` — обо мне
-- `/blog` — список статей и материалов
-- `/blog/[slug]` — отдельная статья
-- `/api/order` — POST endpoint → Telegram Bot API
-- `/keystatic` — CMS
+- 403 от S3 (нет такого ключа) CloudFront превращает в 404 с `/404.html`.
+- HTML кешируется браузером с `max-age=0`, CloudFront держит до инвалидации;
+  прочие файлы — `max-age=86400`, поэтому заменённую картинку лучше переименовывать.
+- `how_can_i_help.mp4` весит 22 МБ — основной объём трафика.
+- Лендинг `/podrostki` встраивает Calendly (внешний скрипт `assets.calendly.com`).
