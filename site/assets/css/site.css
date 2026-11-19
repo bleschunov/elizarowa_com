@@ -1,0 +1,138 @@
+/* Шрифт Inter (400/500/600, кириллица + латиница), файлы в /assets/fonts */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/inter-cyrillic-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/inter-cyrillic-400-normal.woff2") format("woff2");
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/inter-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/assets/fonts/inter-cyrillic-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/assets/fonts/inter-cyrillic-500-normal.woff2") format("woff2");
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/assets/fonts/inter-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/assets/fonts/inter-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/inter-cyrillic-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/inter-cyrillic-600-normal.woff2") format("woff2");
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/inter-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* ── Окна (<dialog>) ─────────────────────────────────────────────────────── */
+dialog { margin: auto; }
+.contact-dialog { position: fixed; max-width: calc(100vw - 2rem); }
+.contact-dialog::backdrop { background: rgb(0 0 0 / 0.5); backdrop-filter: blur(4px); }
+.diploma-dialog { background: transparent; padding: 1rem; max-width: min(48rem, 100vw); max-height: 100vh; overflow: visible; }
+.diploma-dialog::backdrop { background: rgb(0 0 0 / 0.8); }
+
+/* ── Главная: фон бургер-меню ───────────────────────────────────────────── */
+.burger-menu {
+  background: linear-gradient(135deg, #c8b596 0%, #b39a78 25%, #9e8264 50%, #6d5844 75%, #4a3f35 100%);
+}
+
+/* ── «Обо мне»: оглавление и видео-виджет ───────────────────────────────── */
+@media (min-width: 1536px) {
+  .toc-desktop { right: calc((100vw - 896px) / 2 - 160px); }
+}
+.vw-container { width: min(200px, 30vw); transition: width 0.3s ease, transform 0.2s ease; }
+.vw-container:not(.is-expanded):hover { transform: scale(1.05); }
+.vw-container.is-expanded { width: min(480px, calc(100vw - 48px)); }
+
+/* ── Лендинг: Calendly ──────────────────────────────────────────────────── */
+.calendly-embed { min-width: 320px; height: 700px; }
+
+/* ── Текст статьи ───────────────────────────────────────────────────────── */
+.article-content { color: #374151; font-size: 1.0625rem; line-height: 1.75; }
+.article-content p { margin-bottom: 1.25rem; }
+.article-content h2 { font-size: 1.375rem; font-weight: 600; color: #1f2937; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+.article-content h3 { font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+.article-content ul,
+.article-content ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.article-content ul { list-style-type: disc; }
+.article-content ol { list-style-type: decimal; }
+.article-content li { margin-bottom: 0.375rem; }
+.article-content strong { font-weight: 600; color: #1f2937; }
+.article-content a { color: #846b52; text-decoration: underline; }
+.article-content blockquote { border-left: 3px solid #ddd0b8; padding-left: 1rem; color: #6b7280; font-style: italic; margin: 1.5rem 0; }
+.article-content img { display: block; max-width: 100%; height: auto; border-radius: 1rem; margin: 1.5rem 0; }
+.article-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; }
+.article-content th,
+.article-content td { border: 1px solid #ede4d3; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
