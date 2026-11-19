@@ -5,8 +5,9 @@
 Сайт психолога Екатерины Елизаровой. **Чистая статика без сборки**: HTML + CSS + ванильный JS
 в папке `site/`, которая целиком синхронизируется в приватный S3 и раздаётся через CloudFront.
 
-Домен: elizarowa.com (регистратор — Squarespace, DNS — Route 53).
-Репо: github.com/bleschunov/elizarowa_com (приватное).
+Домен: elizarowa.com (регистратор и DNS — Squarespace).
+Репо: github.com/bleschunov/elizarowa_com (публичное).
+Хостинг (S3, CloudFront, ACM, IAM) — Terraform в github.com/bleschunov/infra, не здесь.
 
 ## Принципы (не нарушать)
 
@@ -19,8 +20,8 @@
 ## Структура
 
 - `site/**/index.html` — страницы; URL без расширения (`/about`, `/blog/<slug>`).
-  CloudFront Function (`infra/site.yaml` → `RouterFunction`) дописывает `/index.html`
-  и редиректит любой другой Host (www, *.cloudfront.net) на `https://elizarowa.com`.
+  CloudFront Function из infra дописывает `/index.html`, редиректит `/about/` → `/about`
+  и `www.elizarowa.com` → `https://elizarowa.com`. Внутренние ссылки — без слеша на конце.
 - Шапка, футер, `<head>` и окно `#contact-dialog` **продублированы в каждой странице**.
   Меняя их, меняйте во всех `site/**/*.html` (кроме `index.html` и `podrostki/` — там своя вёрстка).
 - `site/assets/js/main.js` — все интерактивы, каждый блок проверяет наличие элементов:
@@ -33,22 +34,15 @@
 - Статьи: `site/blog/<slug>/index.html`, текст в `<div class="article-content">`;
   карточка статьи вручную добавляется в начало списка в `site/blog/index.html`.
 
-## Инфраструктура
+## Инфраструктура и деплой
 
-- `infra/site.yaml` — CloudFormation-стек `elizarowa-com` в `us-east-1`: Route 53 (с почтой
-  Mailgun: MX/SPF/DKIM/DMARC), ACM, S3 (приватный, OAC), CloudFront, политика для OIDC-роли.
-  Параметр `EnableSite`: `false` — только DNS (сайт на старом IP), `true` — всё.
-- `infra/deploy.sh dns|site|status` — применить шаблон (`DEPLOY_ROLE_NAME` — имя OIDC-роли).
-- DNS-записи меняются только через шаблон, не в консоли.
-- `scripts/setup-aws-wizard.sh` — одноразовый мастер переезда с VPS (Squarespace NS → Route 53).
-
-## Деплой
-
-`.github/workflows/deploy.yml`: пуш в `main` по `site/**` (или вручную) → OIDC-вход в AWS →
-`aws s3 sync site/` (сначала файлы, потом HTML) → инвалидация `/*`.
-Секреты репозитория GitHub Actions: `AWS_ROLE_ARN`, `S3_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`
-(записывает `scripts/setup-aws-wizard.sh`; значения — outputs стека, `infra/deploy.sh status`).
-Actions закреплены по SHA коммита — при обновлении менять SHA и комментарий с версией.
+- Хостинг описан в bleschunov/infra (`sites.tf`: домен и сайт `elizarowa.com`). Заголовки
+  безопасности, редиректы, страница ошибок — там. DNS — в Squarespace, руками.
+- `.github/workflows/deploy.yml`: пуш в `main` по `site/**` (или вручную) → OIDC-вход в AWS →
+  `aws s3 sync site/` в `s3://$S3_BUCKET/$S3_PREFIX/` (сначала файлы, потом HTML) → инвалидация `/*`.
+- Переменные репозитория (vars, не secrets): `AWS_ROLE_ARN`, `S3_BUCKET`, `S3_PREFIX`,
+  `CLOUDFRONT_DISTRIBUTION_ID` — из `terraform output github_variables` в infra.
+- Actions закреплены по SHA коммита — при обновлении менять SHA и комментарий с версией.
 
 ## Локальный просмотр
 
@@ -56,7 +50,7 @@ Actions закреплены по SHA коммита — при обновлен
 
 ## Известные нюансы
 
-- 403 от S3 (нет такого ключа) CloudFront превращает в 404 с `/404.html`.
+- 403 от S3 (нет такого ключа) CloudFront превращает в 404 с `site/404.html` (`error_site` в infra).
 - HTML кешируется браузером с `max-age=0`, CloudFront держит до инвалидации;
   прочие файлы — `max-age=86400`, поэтому заменённую картинку лучше переименовывать.
 - `how_can_i_help.mp4` весит 22 МБ — основной объём трафика.

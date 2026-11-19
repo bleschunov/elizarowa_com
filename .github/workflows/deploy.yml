@@ -23,19 +23,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Repository variables from `terraform output github_variables` in bleschunov/infra.
     env:
       AWS_REGION: us-east-1
-      S3_BUCKET: ${{ secrets.S3_BUCKET }}
-      CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN }}
+      S3_BUCKET: ${{ vars.S3_BUCKET }}
+      S3_PREFIX: ${{ vars.S3_PREFIX }}
+      CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
 
     steps:
-      - name: Check repository secrets
-        env:
-          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      - name: Check repository variables
         run: |
           missing=0
-          for v in AWS_ROLE_ARN S3_BUCKET CLOUDFRONT_DISTRIBUTION_ID; do
-            if [ -z "${!v}" ]; then echo "::error::Repository secret $v is not set (run scripts/setup-aws-wizard.sh)"; missing=1; fi
+          for v in AWS_ROLE_ARN S3_BUCKET S3_PREFIX CLOUDFRONT_DISTRIBUTION_ID; do
+            if [ -z "${!v}" ]; then echo "::error::Repository variable $v is not set (see bleschunov/infra)"; missing=1; fi
           done
           exit $missing
 
@@ -45,18 +46,19 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
+      # Сайт лежит в префиксе elizarowa.com/ общего бакета static-sites.
       # Сначала файлы (картинки, css, js), потом HTML — чтобы новые страницы
       # не ссылались на ещё не загруженные файлы.
       # HTML: браузер всегда перепроверяет, CloudFront кеширует до инвалидации.
       - name: Upload to S3
         run: |
-          aws s3 sync site/ "s3://$S3_BUCKET" --delete --no-progress \
+          aws s3 sync site/ "s3://$S3_BUCKET/$S3_PREFIX/" --delete --no-progress \
             --exclude '*.html' --exclude '.DS_Store' \
             --cache-control 'public, max-age=86400'
-          aws s3 sync site/ "s3://$S3_BUCKET" --delete --no-progress \
+          aws s3 sync site/ "s3://$S3_BUCKET/$S3_PREFIX/" --delete --no-progress \
             --exclude '*' --include '*.html' \
             --content-type 'text/html; charset=utf-8' \
             --cache-control 'public, max-age=0, s-maxage=31536000, must-revalidate'
